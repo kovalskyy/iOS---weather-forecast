@@ -35,7 +35,12 @@ class WeatherView: UIView {
        pressure.text = "Pressure: \(weather.pressure)"
         
         switch weather.backGround {
-            
+        case Weather.backGroundStyle.clouds, Weather.backGroundStyle.rain, Weather.backGroundStyle.snow:
+            changeLblColor(color: CLOUDS_RAIN_SNOW_COLOR)
+        case Weather.backGroundStyle.sun:
+            changeLblColor(color: SUN_COLOR)
+        case Weather.backGroundStyle.thunder:
+            changeLblColor(color: THUNDER_COLOR)
         }
         
         

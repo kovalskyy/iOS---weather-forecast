@@ -10,12 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-    
+    @IBOutlet weak var weatherView: WeatherView!
+    var weather: Weather!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        weather = Weather(location: URL_LOCATION)
+        weather.downloadWeatherDetails {
+            
+        }
+        
     }
 
 

@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="WeatherView" customModule="weather" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -72,7 +72,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eTe-g0-4pd">
-                                        <frame key="frameInset" minX="214" minY="209" width="95" height="51"/>
+                                        <frame key="frameInset" minX="214" minY="209" width="125" height="51"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity: 80%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYj-0V-JZd">
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
@@ -84,7 +84,7 @@
                                                 <color key="textColor" red="0.69125026339999995" green="0.072617375540000001" blue="0.95620993590000003" alpha="0.4837284483" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From: North" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNX-km-AIz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure: 1050 hPa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNX-km-AIz">
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.69125026339999995" green="0.072617375540000001" blue="0.95620993590000003" alpha="0.4837284483" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -126,6 +126,17 @@
                             <constraint firstItem="ZW1-8d-m4K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="v2H-Lf-ej0"/>
                             <constraint firstItem="ELw-Ng-16e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vI6-dj-b7O"/>
                         </constraints>
+                        <connections>
+                            <outlet property="day" destination="S3g-Mu-yvT" id="M8C-Ra-aSq"/>
+                            <outlet property="humidity" destination="hYj-0V-JZd" id="V72-sq-DYh"/>
+                            <outlet property="location" destination="sYE-VA-bzO" id="CCr-SL-GSQ"/>
+                            <outlet property="pressure" destination="XNX-km-AIz" id="LVe-NE-yK9"/>
+                            <outlet property="temperature" destination="iaf-2m-h7K" id="FRF-4k-tNi"/>
+                            <outlet property="temperatureUnit" destination="qBB-qt-Xvc" id="ojf-B1-gn8"/>
+                            <outlet property="type" destination="OSO-tf-6NG" id="cCI-eW-huv"/>
+                            <outlet property="weatherImg" destination="ZW1-8d-m4K" id="Ukq-X5-8r6"/>
+                            <outlet property="wind" destination="RwV-2U-Pbo" id="dtR-yG-lSf"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

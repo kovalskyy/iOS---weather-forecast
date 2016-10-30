@@ -17,10 +17,21 @@ class Weather {
     private var _humidity: String!
     private var _wind: String!
     private var _pressure: String!
-    private var _backGroundStyle: BackgroundStyle!
+    private var _backGroundStyle: backGroundStyle!
     
+    enum backGroundStyle {
+        case clouds
+        case sun
+        case thunder
+        case rain
+        case snow
     
+        }
     
+    var backGround: backGroundStyle {
+        return _backGroundStyle
+
+    }
     
     var day: String {
         if _day == nil {
@@ -77,15 +88,93 @@ class Weather {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func downloadWeatherDetails(_completed: @escaping donwloadComplete) {
+        
+        let url = URL(string: "\(URL_WEATHER)\(_location!)\(URL_METRICUNITS)\(URL_KEY)")!
+        
+        Alamofire.request(url).responseJSON { response in
+            debugPrint(response)
+            if let json = response.result.value {
+                print("JSON: \(json)")
+                
+                if let dict = response.result.value as? Dictionary <String, AnyObject> {
+                    
+                    if let weatherDetails = dict["main"] as? Dictionary <String, AnyObject> {
+                        
+                        if let humidity = weatherDetails["humidity"] as? Double {
+                            self._humidity = "\(Int(round(humidity)))"
+                        }
+                        
+                        if let pressure = weatherDetails["pressure"] as? Double {
+                            self._pressure = "\(Int(round(pressure)))"
+                            
+                        }
+                        
+                        if let temperature = weatherDetails["temp"] as? Double {
+                            self._temp = "\(Int(round(temperature)))"
+                        }
+                        print(self._humidity)
+                        print(self._pressure)
+                        print(self._temp)
+                        
+                    }
+                    
+                    if let wind = dict["wind"] as? Dictionary <String, Double> {
+                        
+                        if let windspeed = wind["speed"] {
+                            self._wind = "\(Int(round(windspeed)))"
+                        }
+                        print(self._wind)
+                    }
+                    
+                    if let time = dict["dt"] as? Double {
+                        
+                        let date = Date(timeIntervalSince1970: time)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "EEEE"
+                        self._day = dateFormatter.string(from: date)
+                    }
+                        print(self._day)
+
+                    if let weatherDict = dict["weather"] as? [Dictionary<String, AnyObject>] {
+                        
+                        if let weatherDesc = weatherDict[0]["description"] as? String {
+                            self._type = weatherDesc
+                        }
+                        print(self._type)
+                        
+                        
+                        if let mainWeather = weatherDict[0]["main"] as? String {
+                            switch mainWeather {
+                                case "Thunderstorm":
+                                    self._backGroundStyle = backGroundStyle.thunder
+                                case "Drizzle":
+                                    self._backGroundStyle = backGroundStyle.rain
+                                case "Rain":
+                                    self._backGroundStyle = backGroundStyle.rain
+                                case "Snow":
+                                    self._backGroundStyle = backGroundStyle.snow
+                                case "Atmosphere":
+                                    self._backGroundStyle = backGroundStyle.clouds
+                                case "Clear":
+                                    self._backGroundStyle = backGroundStyle.sun
+                                case "Clouds":
+                                    self._backGroundStyle = backGroundStyle.clouds
+                                case "Extreme":
+                                    self._backGroundStyle = backGroundStyle.thunder
+                            default:
+                                self._backGroundStyle = backGroundStyle.sun
+                            
+                            }
+       
+                    }
+ 
+                    }
+        
+                }
+               
+            }
+             _completed()
+        }
+    }
 }

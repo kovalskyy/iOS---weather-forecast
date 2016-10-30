@@ -21,13 +21,41 @@ class WeatherView: UIView {
     @IBOutlet weak var wind: UILabel!
     @IBOutlet weak var pressure: UILabel!
     
+    var weather: Weather!
     
-    
-    
-    
-    
+    func updateWeatherConditions(weather: Weather) {
+        
+       weatherImg.image = UIImage(named: "\(weather.backGround)")
+       day.text = weather.day.uppercased()
+       type.text = weather.type.uppercased()
+       location.text = weather.location.uppercased()
+       temperature.text = weather.temp
+       humidity.text = "Humidity: \(weather.humidity)"
+       wind.text = "Wind: \(weather.wind)"
+       pressure.text = "Pressure: \(weather.pressure)"
+        
+        switch weather.backGround {
+            
+        }
+        
+        
+    }
 
+    func changeLblColor(color: UIColor) {
+        
+        day.textColor = color
+        type.textColor = color
+        location.textColor = color
+        temperature.textColor = color
+        temperatureUnit.textColor = color
+        humidity.textColor = color
+        wind.textColor = color
+        pressure.textColor = color
+        
     
-    
+}
+
+
+        
     
 }

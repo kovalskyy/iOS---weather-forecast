@@ -19,7 +19,7 @@ class ViewController: UIViewController {
        
         weather = Weather(location: URL_LOCATION)
         weather.downloadWeatherDetails {
-            
+            self.weatherView.updateWeatherConditions(weather: self.weather)
         }
         
     }

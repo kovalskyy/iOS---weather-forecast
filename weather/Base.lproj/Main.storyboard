@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather app sunny" translatesAutoresizingMaskIntoConstraints="NO" id="ZW1-8d-m4K"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun" translatesAutoresizingMaskIntoConstraints="NO" id="ZW1-8d-m4K"/>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agG-Z7-mvY">
                                 <frame key="frameInset" minX="16" minY="345" width="343" height="284"/>
                                 <subviews>
@@ -109,10 +109,13 @@
                                 <frame key="frameInset" minX="62" minY="628" width="240" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="0.48372844827586209" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="RZH-IE-W82"/>
-                                    <constraint firstAttribute="height" constant="15" id="s3T-4y-EWB"/>
+                                    <constraint firstAttribute="width" constant="300" id="RZH-IE-W82"/>
+                                    <constraint firstAttribute="height" constant="30" id="s3T-4y-EWB"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CZG-qd-MIJ">
+                                <frame key="frameInset" minX="177" minY="279" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -120,14 +123,18 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZW1-8d-m4K" secondAttribute="bottom" id="5Da-Sg-RQH"/>
                             <constraint firstAttribute="trailing" secondItem="ZW1-8d-m4K" secondAttribute="trailing" id="PN7-2u-BMf"/>
                             <constraint firstItem="agG-Z7-mvY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="QDm-oo-nQu"/>
+                            <constraint firstItem="agG-Z7-mvY" firstAttribute="top" secondItem="CZG-qd-MIJ" secondAttribute="bottom" constant="50" id="Spl-7R-I3z"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="agG-Z7-mvY" secondAttribute="bottom" constant="40" id="VlM-ZG-fx8"/>
+                            <constraint firstItem="CZG-qd-MIJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ewS-Oc-Iuo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ELw-Ng-16e" secondAttribute="bottom" constant="25" id="o49-XQ-dDZ"/>
                             <constraint firstAttribute="trailing" secondItem="agG-Z7-mvY" secondAttribute="trailing" constant="16" id="usH-U0-rcJ"/>
                             <constraint firstItem="ZW1-8d-m4K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="v2H-Lf-ej0"/>
                             <constraint firstItem="ELw-Ng-16e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vI6-dj-b7O"/>
                         </constraints>
                         <connections>
+                            <outlet property="anotherDetailView" destination="ELw-Ng-16e" id="oSV-3G-OnD"/>
                             <outlet property="day" destination="S3g-Mu-yvT" id="M8C-Ra-aSq"/>
+                            <outlet property="detailView" destination="agG-Z7-mvY" id="wjx-Ft-aIp"/>
                             <outlet property="humidity" destination="hYj-0V-JZd" id="V72-sq-DYh"/>
                             <outlet property="location" destination="sYE-VA-bzO" id="CCr-SL-GSQ"/>
                             <outlet property="pressure" destination="XNX-km-AIz" id="LVe-NE-yK9"/>
@@ -138,6 +145,10 @@
                             <outlet property="wind" destination="RwV-2U-Pbo" id="dtR-yG-lSf"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="ActivityIndicator" destination="CZG-qd-MIJ" id="w5R-ws-Gk3"/>
+                        <outlet property="weatherView" destination="8bC-Xf-vdC" id="EZW-LB-rLg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,6 +156,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="weather app sunny" width="750" height="1334"/>
+        <image name="sun" width="750" height="1334"/>
     </resources>
 </document>

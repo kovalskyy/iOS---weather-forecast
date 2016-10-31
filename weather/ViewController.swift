@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var weatherView: WeatherView!
     var weather: Weather!
 
@@ -17,9 +19,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        
+        
         weather = Weather(location: URL_LOCATION)
-        weather.downloadWeatherDetails {
+        weather.downloadWeatherDetails { () -> () in
             self.weatherView.updateWeatherConditions(weather: self.weather)
+            self.ActivityIndicator.stopAnimating()
         }
         
     }

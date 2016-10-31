@@ -11,6 +11,9 @@ import UIKit
 class WeatherView: UIView {
 
     
+    @IBOutlet weak var anotherDetailView: UIView!
+    @IBOutlet weak var detailView: UIView!
+    
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var type: UILabel!
@@ -21,18 +24,22 @@ class WeatherView: UIView {
     @IBOutlet weak var wind: UILabel!
     @IBOutlet weak var pressure: UILabel!
     
-    var weather: Weather!
+     var weather: Weather!
     
     func updateWeatherConditions(weather: Weather) {
         
        weatherImg.image = UIImage(named: "\(weather.backGround)")
        day.text = weather.day.uppercased()
        type.text = weather.type.uppercased()
-       location.text = weather.location.uppercased()
+       location.text = weather.location.uppercased() + ", PL"
        temperature.text = weather.temp
-       humidity.text = "Humidity: \(weather.humidity)"
-       wind.text = "Wind: \(weather.wind)"
-       pressure.text = "Pressure: \(weather.pressure)"
+       humidity.text = "Humidity: \(weather.humidity) %"
+       wind.text = "Wind: \(weather.wind) km/h"
+       pressure.text = "Pressure: \(weather.pressure) hPa"
+        
+       detailView.layer.cornerRadius = 10.0
+        anotherDetailView.layer.cornerRadius = 10.0
+        
         
         switch weather.backGround {
         case Weather.backGroundStyle.clouds, Weather.backGroundStyle.rain, Weather.backGroundStyle.snow:
@@ -60,7 +67,8 @@ class WeatherView: UIView {
     
 }
 
-
+  
+   
         
     
 }
